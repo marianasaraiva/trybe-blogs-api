@@ -6,7 +6,6 @@ const secret = 'palavraSecretaToken';
 
 module.exports = async (req, res, next) => {
   const token = req.headers.authorization;
-  console.log('auth token', token);
   
   if (!token) {
     return res.status(401).json({ message: 'Token not found' });
