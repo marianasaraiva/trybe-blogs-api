@@ -1,9 +1,9 @@
 // const express = require('express');
 const { User } = require('../models');
 
- const findAllUsers = async (_req, res, next) => {
+ const findAllUsers = async (req, res, next) => {
   try {
-    const user = await User.findAll();
+    const user = await User.findAll({ attributes: { exclude: 'password' } });
 
     return res.status(200).json(user);
   } catch (error) {
