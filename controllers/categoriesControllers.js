@@ -1,14 +1,17 @@
 const { Category } = require('../models');
 
+const findAllCategories = async (req, res, next) => {
+  try {
+    const category = await Category.findAll();
+
+    return res.status(200).json(category);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const createCategory = async (req, res, next) => {
   try {
-    // const { name } = req.body;
-    // const Register = await Category.findOne({ where: { name } });
-
-    // if (emailRegister) {
-    //   return res.status(409).json({ message: 'User already registered' });
-    // }
-    
     const category = await Category.create(req.body);
 
     return res.status(201).json(category);
@@ -17,4 +20,4 @@ const createCategory = async (req, res, next) => {
   }
 };
 
-module.exports = { createCategory };
+module.exports = { findAllCategories, createCategory };
