@@ -7,9 +7,11 @@ app.use(bodyParser.json());
 // app.use(express.json());
 
 const users = require('./routes/user');
+const login = require('./routes/login');
 const error = require('./middlewares/error');
 
 app.use('/', users);
+app.use('/', login);
 
 app.use(error);
 
