@@ -14,6 +14,26 @@ const findAllPosts = async (req, res, next) => {
   }
 };
 
+const findPostById = async (req, res, next) => {
+  try {
+    const { id } = req.params; 
+    const [post] = await BlogPost.findAll({
+      where: { id },
+      include: 
+        [{ model: User, as: 'user', attributes: { exclude: 'password' } },
+        { model: Category, as: 'categories', through: { attributes: [] } }],
+    });
+
+    if (!post) {
+      return res.status(404).json({ message: 'Post does not exist' });
+    }
+
+    return res.status(200).json(post);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const createPost = async (req, res, next) => {
   try {
     const { title, content, categoryIds } = req.body;
@@ -33,4 +53,4 @@ const createPost = async (req, res, next) => {
   }
 };
 
-module.exports = { findAllPosts, createPost };
+module.exports = { findAllPosts, findPostById, createPost };
