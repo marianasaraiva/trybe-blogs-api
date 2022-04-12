@@ -34,6 +34,32 @@ const findPostById = async (req, res, next) => {
   }
 };
 
+const updatePostsById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { title, content, categoryIds } = req.body;
+
+    if (categoryIds) return res.status(401).json({ message: 'Categories cannot be edited' });
+
+    await BlogPost.update({ title, content }, { where: { id },
+      returning: true });
+    
+    const findByOne = await BlogPost.findOne({ 
+      where: { id },
+      attributes: { exclude: ['published', 'updated'] },
+      include: { model: Category, as: 'categories', through: { attributes: [] } },
+    });
+
+    if (findByOne.userId !== req.user.id) {
+      return res.status(401).json({ message: 'Unauthorized user' });
+    }
+    
+    return res.status(200).json(findByOne); 
+  } catch (error) {
+    next(error);
+  }
+};
+
 const createPost = async (req, res, next) => {
   try {
     const { title, content, categoryIds } = req.body;
@@ -53,4 +79,4 @@ const createPost = async (req, res, next) => {
   }
 };
 
-module.exports = { findAllPosts, findPostById, createPost };
+module.exports = { findAllPosts, findPostById, updatePostsById, createPost };
