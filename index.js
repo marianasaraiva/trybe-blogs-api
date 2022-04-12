@@ -9,11 +9,13 @@ app.use(bodyParser.json());
 const users = require('./routes/user');
 const login = require('./routes/login');
 const categories = require('./routes/categories');
+const post = require('./routes/post');
 const error = require('./middlewares/error');
 
 app.use('/', users);
 app.use('/', login);
 app.use('/', categories);
+app.use('/', post);
 
 app.use(error);
 

@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     image: { type: DataTypes.STRING, allowNull: false },
   },
   { timestamps: false });
-  // User.associate = (models) => {
-  //   User.hasMany(models.BlogPost, { foreignKey: 'userId', as: 'blogPost' });
-  // };
+  User.associate = (models) => {
+    User.hasMany(models.BlogPost, { foreignKey: 'userId', as: 'blogPost' });
+  };
   return User;
 };

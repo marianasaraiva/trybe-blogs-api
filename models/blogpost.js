@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     published: DataTypes.DATE,
     updated: DataTypes.DATE,
-  });
-  // BlogPost.associate = (models) => {
-  //   BlogPost.belongsTo(models.User, { foreignKey: 'id', as: 'user' });
-  // };
+  }, { timestamps: false });
+  BlogPost.associate = (models) => {
+    BlogPost.belongsTo(models.User, { foreignKey: 'id', as: 'user' });
+  };
   return BlogPost;
 };
