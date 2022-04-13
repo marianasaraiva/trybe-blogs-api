@@ -79,4 +79,26 @@ const createPost = async (req, res, next) => {
   }
 };
 
-module.exports = { findAllPosts, findPostById, updatePostsById, createPost };
+const deletePostsById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const findByOne = await BlogPost.findOne({ where: { id } });
+
+    if (!findByOne) {
+      return res.status(404).json({ message: 'Post does not exist' });
+    }
+    
+    if (findByOne.userId !== req.user.id) {
+      return res.status(401).json({ message: 'Unauthorized user' });
+    }
+
+    await BlogPost.destroy({ where: { id } });
+    
+    return res.status(204).end(); 
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { findAllPosts, findPostById, updatePostsById, createPost, deletePostsById };
