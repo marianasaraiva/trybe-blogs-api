@@ -41,4 +41,14 @@ const createUsers = async (req, res, next) => {
   }
 };
 
-module.exports = { findAllUsers, findUserById, createUsers };
+const deleteUserMe = async (req, res, next) => {
+  try { 
+    await User.destroy({ where: { id: req.user.id } });
+    
+    return res.status(204).end(); 
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { findAllUsers, findUserById, createUsers, deleteUserMe };

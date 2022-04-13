@@ -8,5 +8,6 @@ const authToken = require('../controllers/auth/vallidateJWT');
 router.get('/', authToken, UserControllers.findAllUsers);
 router.get('/:id', authToken, UserControllers.findUserById);
 router.post('/', validationUsers, UserControllers.createUsers);
+router.delete('/me', authToken, UserControllers.deleteUserMe);
 
 module.exports = router;
