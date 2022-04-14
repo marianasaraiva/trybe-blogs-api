@@ -6,6 +6,7 @@ const validationPost = require('../middlewares/post');
 const updatedPost = require('../middlewares/updatePost');
 const authToken = require('../controllers/auth/vallidateJWT');
 
+router.get('/search', authToken, PostControllers.findPostByQuery);
 router.get('/:id', authToken, PostControllers.findPostById);
 router.put('/:id', updatedPost, authToken, PostControllers.updatePostsById);
 router.delete('/:id', authToken, PostControllers.deletePostsById);
