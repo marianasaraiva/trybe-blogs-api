@@ -31,4 +31,4 @@ Para fazer um post é necessário usuário e login, portanto será trabalhada a 
 - MYSQL_USER: nome do usuário
 - MYSQL_PASSWORD: password
 
-2. Documentação da API: 
+2.0 Documentação da API: 
