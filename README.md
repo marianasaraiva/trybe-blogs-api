@@ -20,15 +20,13 @@ Para fazer um post é necessário usuário e login, portanto será trabalhada a 
 
 ## :dart: Instruções para visualizar o projeto:
 
-1.0 Realizar o git clone;
+Realizar o git clone;
 
-1.1 Realizar o npm install;
+  - Realizar o npm install;
+  - Criar arquivo .env na raiz do projeto;
+  - Setar as variavéis de ambiente no arquivo .env:
+    - HOSTNAME: nome do host
+    - MYSQL_USER: nome do usuário
+    - MYSQL_PASSWORD: password
 
-1.2 Criar arquivo .env na raiz do projeto;
-
-1.3 Setar as variavéis de ambiente no arquivo .env:
-- HOSTNAME: nome do host
-- MYSQL_USER: nome do usuário
-- MYSQL_PASSWORD: password
-
-2.0 Documentação da API: 
+Documentação da API: 
