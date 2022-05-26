@@ -25,8 +25,10 @@ Realizar o git clone;
   - Realizar o `npm install`;
   - Criar arquivo `.env` na raiz do projeto;
   - Setar as variavéis de ambiente no arquivo `.env`:
-    - HOSTNAME: nome do host
-    - MYSQL_USER: nome do usuário
-    - MYSQL_PASSWORD: password
+ ```
+    HOSTNAME=nome do host
+    MYSQL_USER=nome do usuário
+    MYSQL_PASSWORD=password
+ ```
 
 Documentação da API: 
