@@ -22,9 +22,9 @@ Para fazer um post é necessário usuário e login, portanto será trabalhada a 
 
 Realizar o git clone;
 
-  - Realizar o npm install;
-  - Criar arquivo .env na raiz do projeto;
-  - Setar as variavéis de ambiente no arquivo .env:
+  - Realizar o `npm install`;
+  - Criar arquivo `.env` na raiz do projeto;
+  - Setar as variavéis de ambiente no arquivo `.env`:
     - HOSTNAME: nome do host
     - MYSQL_USER: nome do usuário
     - MYSQL_PASSWORD: password
